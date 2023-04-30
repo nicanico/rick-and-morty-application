@@ -1,0 +1,20 @@
+.menu-verde{
+    width: 1271px;
+    height: 54px;
+    background: rgba(167, 203, 84, 0.5);
+    border: 1px solid #FFFFFF;
+    border-radius: 30px;
+    display: flex;
+}
+.menu-verde > ul{
+    display: flex;
+    gap: 58px;
+    align-items: center;
+    padding: 0px 81px 0px 85px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+li > a{
+    color: #252525;
+}
