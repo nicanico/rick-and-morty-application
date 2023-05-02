@@ -2,7 +2,6 @@
     width: auto;
     height: 54px;
     background: rgba(167, 203, 84, 0.5);
-    border: 1px solid #FFFFFF;
     border-radius: 30px;
     display: flex;
 }
@@ -11,10 +10,17 @@
     gap: 58px;
     align-items: center;
     padding: 0px 81px 0px 85px;
-    font-family: 'Roboto';
-    font-weight: 300;
+    font-family: 'Inter';
+    font-weight: 500;
     font-size: 1.2rem;
 }
 li > a{
     color: #252525;
+    transition: 1s;
+}
+li > a:hover{
+   color: #FFFFFF;
+       text-shadow: 0.1em 0.1em 0.2em rgba(89, 255, 12, 0.323);
+
+   
 }

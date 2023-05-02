@@ -1,12 +1,35 @@
-.container-planets{
+.container-principal{
+    z-index: 1000;
     position: absolute;
-    left: 48px;
-    top: 250px;
-    transform: translate(50%, -50%);
+    display: grid;
 }
-.container-planets > img{
+main{
+    display: grid;
+    justify-content: end;
+    margin-top: 90px;
+}
+main > .planeta1{
+    position: absolute;
+    left: 50px;
+    top: 270px; 
+}
+
+main > .lua{
+    position: absolute;
+    left: 1370px;
+    top: 110px;
+}
+
+main > .planet{
+    position: absolute;
+    left: -4px;
+    top: 500px;}
+
+main > .planeta1, .lua, .terra, .planet, .fire-planet{
+    left: -90;
     animation: flutuacao 10s ease-in-out infinite;
-}
+} 
+
 @keyframes flutuacao {
     0%, 100%{
         transform: translateY(0px);

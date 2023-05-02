@@ -1,18 +1,9 @@
 body{
     background-color: #252525;
     width: 100%;
-    height: 138.5vh;
+    height: 180vh;
 }
-.bluer{
-    height: 837px;
-    width: 100%;
-    background: linear-gradient(180deg, rgba(37, 37, 37, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
-    /*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
-    backdrop-filter: blur( 5px );
-    -webkit-backdrop-filter: blur( 5px );
-    border-bottom: 1px solid rgba( 255, 255, 255, 0.18 );
-    
-}
+
 section > div{
     width: 100%;
     text-align: end;
@@ -20,12 +11,25 @@ section > div{
     position: absolute;
     overflow: hidden;
 }
-.background{
-    width: 926.69px;
-}
 header{
     padding: 31px 84px 0px 85px;
 }
-/* main{
-
-} */
+main{
+    width: 100%;
+    height: 50rem;
+}
+.line{
+    width: 100%; 
+}
+.container-card-nico{
+    background-image: url(../img/Group8.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 70vh;
+}
+footer{
+    width: 100%;
+    height: 67px;
+    background: #303032;
+}
