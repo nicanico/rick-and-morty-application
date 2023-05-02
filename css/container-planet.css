@@ -17,13 +17,18 @@ main > .planeta1{
 main > .lua{
     position: absolute;
     left: 1370px;
-    top: 110px;
+    top: 230px;
+    width: 100px;
+    height: 150px;
 }
 
 main > .planet{
     position: absolute;
     left: -4px;
-    top: 500px;}
+    top: 500px;
+    width: 170px;
+    height: 230px;
+}
 
 main > .planeta1, .lua, .terra, .planet, .fire-planet{
     left: -90;

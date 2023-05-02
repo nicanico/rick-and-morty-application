@@ -20,7 +20,4 @@ li > a{
 }
 li > a:hover{
    color: #FFFFFF;
-       text-shadow: 0.1em 0.1em 0.2em rgba(89, 255, 12, 0.323);
-
-   
 }
