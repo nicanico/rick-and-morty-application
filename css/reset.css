@@ -11,3 +11,9 @@ a{
     text-decoration: none;
     font-family: 'Inter';
 }
+input, input:focus {
+    box-shadow: 0 0 0 0;
+    border: 1px solid rgb(177, 223, 40);
+    outline: 0;
+    padding: 12px;
+} 

@@ -1,8 +1,8 @@
 .menu-verde{
     width: auto;
     height: 54px;
-    background: rgba(167, 203, 84, 0.5);
-    border-radius: 30px;
+    background: rgba(167, 203, 84);
+    border-bottom: 1px solid #FFFFFF;
     display: flex;
 }
 .menu-verde > ul{
@@ -19,5 +19,5 @@ li > a{
     transition: 1s;
 }
 li > a:hover{
-   color: #FFFFFF;
+    color: #FFFFFF;
 }

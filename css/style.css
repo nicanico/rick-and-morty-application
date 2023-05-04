@@ -1,7 +1,7 @@
 body{
     background-color: #252525;
     width: 100%;
-    height: 180vh;
+    height: 170vh;
 }
 
 section > div{
@@ -11,15 +11,9 @@ section > div{
     position: absolute;
     overflow: hidden;
 }
-header{
-    padding: 31px 84px 0px 85px;
-}
 main{
     width: 100%;
     height: 50rem;
-}
-
-main{
     display: grid;
     justify-content: end;
     margin-top: 90px;
@@ -67,6 +61,7 @@ main > .planeta1, .lua, .terra, .planet, .fire-planet{
     background-size: cover;
     width: 100%;
     height: 70vh;
+    z-index: 909999999;
 }
 footer{
     width: 100%;

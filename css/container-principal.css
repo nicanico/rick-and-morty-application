@@ -1,21 +1,30 @@
 .container-principal{
-    z-index: 1000;
-    display: grid;
+   z-index: 1000;
+   height: 110vh;
+   display: flex;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
    
 }
 .logo-name{
-   display: grid;
+   display: flex;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
-   place-content: center;
-   align-self: center;
+}
+.rick-morty{
+   margin: -7rem;
 }
 .buttons{
    display: flex;
    gap: 20px;
-   
+}
+.input-buttons{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 .input-buttons > input{
    width: 681px;
@@ -23,7 +32,8 @@
    border-radius: 20px;
    margin-bottom: 42px;
    background-color: #252525;
-   border: 1ps solid #B2DF28;
+   
+   
 }
 .buttons > a{
    display: flex;
@@ -33,5 +43,8 @@
    height: 42px;
    background-color: #B2DF28;
    color: #252525;
-   box-shadow: 0px -6px 27px 0px #b1df285f;
+   transition: 0.5s;
+}
+.buttons > a:hover{
+   box-shadow:  0px 10px 25px -3px #b1df2823;
 }
