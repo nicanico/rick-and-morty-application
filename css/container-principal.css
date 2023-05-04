@@ -32,8 +32,7 @@
    border-radius: 20px;
    margin-bottom: 42px;
    background-color: #252525;
-   
-   
+
 }
 .buttons > a{
    display: flex;
@@ -44,7 +43,10 @@
    background-color: #B2DF28;
    color: #252525;
    transition: 0.5s;
+   border-radius: 5px;
 }
 .buttons > a:hover{
+   letter-spacing: 3px;
    box-shadow:  0px 10px 25px -3px #b1df2823;
+   transform: perspective(1em) rotate(5deg);
 }
