@@ -1,0 +1,28 @@
+.card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 470px;
+    height: 240px;
+    background-color: #252525;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid #B2DF28;
+
+}
+.card img{
+    width: 200px;
+    height: 200px;
+}
+.status-condition{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.status-color-person{
+    width: 10px;
+    height: 10px;
+    background-color: tomato;
+    border-radius: 20px;
+}

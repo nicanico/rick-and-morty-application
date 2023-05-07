@@ -2,18 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
-}
-ul,ol,li{
-    list-style: none;
 }
 a{
     text-decoration: none;
-    font-family: 'Inter';
+    color: #fff;
 }
-input, input:focus {
-    box-shadow: 0 0 0 0;
-    border: 1px solid rgb(177, 223, 40);
-    outline: 0;
-    padding: 12px;
-} 
