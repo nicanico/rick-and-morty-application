@@ -1,8 +1,175 @@
 'use strict'
 
-class card extends HTMLElement {
+class cardPerson extends HTMLElement {
     constructor(){
         super()
         this.attachShadow({mode: 'open'})
+
+        this.image = null
+        this.name = 'Nome do personagem'
+        this.gender = 'Genero'
+        this.location = 'localização'
+        this.origin = 'Localização de Origem'
+        this.status = 'desconhecido'
+        this.statusColor = 'background-color: coral'
+        this.species = 'desconhecida'
     }
+
+    static get observedAttributes(){
+        return['name', 'image', 'gender', 'location', 'origin', 'status', 'statusColor', 'species']
+    }
+
+    attributeChangedCallback(nameAttr, oldValue, newValue){
+        this[nameAttr] = newValue
+        
+    }
+
+    connetCallback(){
+        this.shadow.appendChild(this.component())
+        this.shadow.appendChild(this.style())
+    }
+
+    component(){
+
+        const cardPerson = document.createElement('div')
+        cardPerson.classList.add('card-person')
+
+        const photo = document.createElement('img')
+        photo.src = this.image
+
+        const contentGeral = document.createElement('div')
+        cardPerson.classList.add('content-geral')
+
+        const namePerson = document.createElement('p')
+        namePerson.classList.add('name')
+
+        const spanName = document.createElement('span')
+        spanName.textContent = 'Name: '
+
+        namePerson.append(spanName)
+        namePerson.textContent = this.name
+
+        const statusCondition = document.createElement('div')
+        statusCondition.classList.add('status-condition')
+
+        const statusColor = document.createElement('div')
+        statusColor.classList.add('status-color-person')
+
+        if(this.status == 'Dead'){
+            statusColor.style.background = '#cc0000'
+        } else if(this.status == 'Alive'){
+            statusColor.style.background = '#287233'
+        } else if(this.status == 'Unknown'){
+            statusColor.style.background = '#c7c7c7'
+        } else {
+            statusColor.style.background = '#6bd3ff'
+        }
+
+        const statusPerson = document.createElement('p')
+        statusPerson.classList.add('status-person')
+
+        const spanLine = document.createElement('span')
+        spanLine.textContent = '-'
+
+        statusPerson.append(spanLine)
+        statusPerson.textContent = this.status
+
+        const speciesPerson = document.createElement('p')
+        speciesPerson.classList.add('species-person')
+        speciesPerson.textContent = this.species
+
+        statusPerson.append(spanLine)
+        statusPerson.textContent = this.status
+
+        statusCondition.append(statusColor, statusPerson, speciesPerson)
+
+        const genderPerson = document.createElement('p')
+        genderPerson.classList.add('gender')
+
+        const spanGender = document.createElement('span')
+        spanGender.textContent = 'Gender: '
+
+        genderPerson.append(spanGender)
+        genderPerson.textContent = this.gender
+
+        const originPerson = document.createElement('p')
+        originPerson.classList.add('origin-name')
+
+        const spanOrigin = document.createElement('span')
+        spanOrigin.textContent = 'Origin: '
+
+        originPerson.append(spanOrigin)
+        originPerson.textContent = this.origin
+
+        const locationPerson = document.createElement('p')
+        locationPerson.classList.add('location-name')
+
+        const spanLocation = document.createElement('span')
+        spanLocation.textContent = 'First seen in: '
+
+        locationPerson.append(spanOrigin)
+        locationPerson.textContent = this.location
+
+        contentGeral.append(namePerson, statusCondition, genderPerson, originPerson, locationPerson)
+
+        cardPerson.append(photo, contentGeral)
+        
+        return cardPerson
+    }
+
+    style(){
+        const css = document.createElement('style')
+
+        css.textContent = `
+        .card-person{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 370px;
+            height: 170px;
+            background-color: #252525;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+        
+        }
+        .card-person img{
+            width: 130px;
+            height: 130px;
+            margin-right: 19px;
+        }
+        .status-condition{
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        .status-color-person{
+            width: 10px;
+            height: 10px;
+            border-radius: 20px;
+        } `
+
+        return css
+    }
+
 }
+
+customElements.define('card-persona', cardPerson)
+
+/* <div class="card-person">
+            <img src="../img/1.jpeg" alt="">
+            <div class="content-geral">
+                <p class="name"><span>Name: </span>Rick Sanches</p>
+                <div class="status-condition">
+                    <div class="status-color-person"></div>
+                    <p class="status-person">Alive <span>-</span></p>
+                    <p class="species-person">Human</p>
+                </div>
+                
+                <p class="gender"> <span>Gender: </span> Male</p>
+                <p class="origin-name"><span>Origin: </span> Earth</p>
+                <p class="location-name"> <span>First seen in:</span> Earth</p>
+            </div>
+        </div> */

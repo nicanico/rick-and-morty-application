@@ -14,7 +14,7 @@
     place-content: center;
     gap: 15px;
 }
-.card-person{
+/* .card-person{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,4 +43,4 @@
     height: 10px;
     background-color: tomato;
     border-radius: 20px;
-}
+} */

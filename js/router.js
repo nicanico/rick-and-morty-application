@@ -1,8 +1,11 @@
+
 'use strict'
+
+import { listarDadosDaApi, carregarTodosOsPersonagens } from './main.js'
 
 const routes = {
     '/in': 'index.html',
-    '/' :  '/pages/home.html',
+    '/' : '/pages/home.html',
     '/personagens' : '/pages/personagens.html',
     '/localizacao' : '/pages/localizacao.html',
     '/episodio' : '/pages/episodio.html'
@@ -22,11 +25,17 @@ const route = async () => {
 
     // console.log(html)
 
-    // console.log(routes[path])
+    console.log(path)
     
     document.getElementById('root').innerHTML = html
     
-    
+    if(window.location.pathname == '/'){
+        listarDadosDaApi()
+    } else if(window.location.pathname == '/personagens'){
+        console.log(window.location.pathname)
+        carregarTodosOsPersonagens()
+    }
+
 }
 
 window.route = route
