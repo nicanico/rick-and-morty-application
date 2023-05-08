@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/menu-container.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/personagens.css">
+    <link rel="stylesheet" href="./css/index.css">
     <script src="https://kit.fontawesome.com/35bab1e1be.js" crossorigin="anonymous"></script>
     <script src="./js/main.js" type="module"></script>
     <script src="./js/app.js" defer type="module"></script>
@@ -22,6 +23,7 @@
     <header>
         <img src="./img/logo (1).png" alt="">
         <nav class="menu-container">
+            <!-- <a href="/in" onclick="route()">Home</a> -->
             <a href="/" onclick="route()">Home</a>
             <a href="/personagens" onclick="route()">Personagens</a>
             <a href="/localizacao" onclick="route()">Localização</a>
@@ -29,8 +31,19 @@
         </nav>
         <a class="rep" href="https://github.com/nicanico/rick-and-morty-application">Visite o Repositorio</a>
     </header>
+    
     <main id="root">
-        Home
+        <div class="conteudo-primario">
+            <h1>Bem Vindo!</h1>
+            <span class="subtitulo">Navegue pelo acesso rapido</span>
+            <div class="input-buttons">
+                <div class="buttons">
+                    <a class="button-personagens" href="/personagens" onclick="route()">PERSONAGENS</a>
+                    <a class="button-localizacao" href="/localizacao" onclick="route()">LOCALIZAÇÃO</a>
+                    <a class="button-episodio" href="/episodio" onclick="route()">EPISÓDIO</a>
+                </div>
+        </div>
     </main>
+    <footer></footer>
 </body>
 </html>

@@ -7,3 +7,15 @@ a{
     text-decoration: none;
     color: #fff;
 }
+input, input:focus {
+    box-shadow: 0 0 0 0;
+    border: 1px solid rgb(177, 223, 40);
+    outline: 0;
+    padding: 12px;
+    width: 681px;
+    height: 41px;
+    border-radius: 20px;
+    margin-bottom: 42px;
+    background-color: #252525;
+    color: #fff;
+} 

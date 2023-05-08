@@ -1,0 +1,26 @@
+.buttons{
+    display: flex;
+    gap: 20px;
+}
+.input-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.buttons > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 226.5px;
+    height: 42px;
+    background-color: #B2DF28;
+    color: #252525;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+.buttons > a:hover{
+    letter-spacing: 3px;
+    box-shadow:  0px 10px 25px -3px #b1df2823;
+    transform: perspective(1em) rotate(5deg);
+}

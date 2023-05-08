@@ -1,10 +1,11 @@
 'use strict'
 
 const routes = {
+    '/in': 'index.html',
     '/' :  '/pages/home.html',
     '/personagens' : '/pages/personagens.html',
     '/localizacao' : '/pages/localizacao.html',
-    '/episodio' : '/pages/episodio.html',
+    '/episodio' : '/pages/episodio.html'
 }
 
 const route = async () => {
