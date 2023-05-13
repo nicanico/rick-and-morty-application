@@ -13,13 +13,19 @@ const cardDoPersonagem = (personagens) => {
 
     card.image = personagens.image
     card.name = personagens.name
+    card.gender = personagens.gender
+    card.location = personagens.location.name
+    card.origin = personagens.origin.name
+    card.status = personagens.status
+    card.species = personagens.species
+    
 
     return card
     
 }
 
 export const carregarTodosOsPersonagens = () => {
-    const container = document.getElementById('card-personagens')
+    const container = document.getElementById('divPersonagens')
     const cardsPerson = personagens.map(cardDoPersonagem)
 
     container.replaceChildren(...cardsPerson)
@@ -67,3 +73,4 @@ export const listarDadosDaApi = async () => {
 
 // cardDoPersonagem()
 // carregarTodosOsPersonagens()
+

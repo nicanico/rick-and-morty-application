@@ -1,9 +1,9 @@
 'use strict'
 
-class cardPerson extends HTMLElement {
-    constructor(){
+class card extends HTMLElement {
+    constructor() {
         super()
-        this.attachShadow({mode: 'open'})
+        this.shadow = this.attachShadow({mode: 'open'})
 
         this.image = null
         this.name = 'Nome do personagem'
@@ -16,29 +16,69 @@ class cardPerson extends HTMLElement {
     }
 
     static get observedAttributes(){
-        return['name', 'image', 'gender', 'location', 'origin', 'status', 'statusColor', 'species']
+        return ['name', 'image', 'gender', 'location', 'origin', 'status', 'statusColor', 'species']
     }
 
-    attributeChangedCallback(nameAttr, oldValue, newValue){
+    attributeChangedCallback(nameAttr, oldValue, newValue) {
         this[nameAttr] = newValue
-        
     }
 
-    connetCallback(){
+    connectedCallback() {
         this.shadow.appendChild(this.component())
         this.shadow.appendChild(this.style())
     }
 
-    component(){
+    component() {
+        // const card = document.createElement('div')
+        // card.classList.add('card-person')
 
-        const cardPerson = document.createElement('div')
-        cardPerson.classList.add('card-person')
+        // const photo = document.createElement('img')
+        // photo.src = this.image
+
+        // const content = document.createElement('div')
+        // card.classList.add('content-geral')
+
+        // const namePerson = document.createElement('p')
+        // namePerson.classList.add('name')
+        // namePerson.textContent = this.name
+
+        // const statusCondition = document.createElement('div')
+        // card.classList.add('content-geral')
+
+        // const statusPerson = document.createElement('p')
+        // statusPerson.classList.add('status-person')
+        // statusPerson.textContent = this.status
+
+        // const speciePerson = document.createElement('p')
+        // speciePerson.classList.add('species-person')
+        // speciePerson.textContent = this.species
+
+        // statusCondition.append(statusPerson, speciePerson)
+
+        // const gender = document.createElement('p')
+        // gender.classList.add('gender')
+        // gender.textContent = this.gender
+
+        // const origin = document.createElement('p')
+        // origin.classList.add('origin-name')
+        // origin.textContent = this.origin
+
+        // const location = document.createElement('p')
+        // location.classList.add('location-name')
+        // location.textContent = this.location
+
+        // content.append(namePerson, statusCondition, gender, origin)
+
+        // card.append(photo, content)
+
+        const card = document.createElement('div')
+        card.classList.add('card-person')
 
         const photo = document.createElement('img')
         photo.src = this.image
 
         const contentGeral = document.createElement('div')
-        cardPerson.classList.add('content-geral')
+        contentGeral.classList.add('content-geral')
 
         const namePerson = document.createElement('p')
         namePerson.classList.add('name')
@@ -112,15 +152,14 @@ class cardPerson extends HTMLElement {
 
         contentGeral.append(namePerson, statusCondition, genderPerson, originPerson, locationPerson)
 
-        cardPerson.append(photo, contentGeral)
-        
-        return cardPerson
+        card.append(photo, contentGeral)
+
+        return card
     }
 
-    style(){
-        const css = document.createElement('style')
-
-        css.textContent = `
+    style() {
+        const style = document.createElement('style')
+        style.textContent = `
         .card-person{
             display: flex;
             justify-content: space-between;
@@ -139,6 +178,7 @@ class cardPerson extends HTMLElement {
             width: 130px;
             height: 130px;
             margin-right: 19px;
+            
         }
         .status-condition{
             display: flex;
@@ -148,28 +188,28 @@ class cardPerson extends HTMLElement {
         .status-color-person{
             width: 10px;
             height: 10px;
+            background-color: tomato;
             border-radius: 20px;
-        } `
-
-        return css
+        } 
+        `
+        return style
     }
 
 }
 
-customElements.define('card-persona', cardPerson)
+customElements.define('card-persona', card)
 
-/* <div class="card-person">
-            <img src="../img/1.jpeg" alt="">
-            <div class="content-geral">
-                <p class="name"><span>Name: </span>Rick Sanches</p>
-                <div class="status-condition">
-                    <div class="status-color-person"></div>
-                    <p class="status-person">Alive <span>-</span></p>
-                    <p class="species-person">Human</p>
-                </div>
-                
-                <p class="gender"> <span>Gender: </span> Male</p>
-                <p class="origin-name"><span>Origin: </span> Earth</p>
-                <p class="location-name"> <span>First seen in:</span> Earth</p>
-            </div>
-        </div> */
+
+    //     this.image = null
+    //     this.name = 'Nome do personagem'
+    //     this.gender = 'Genero'
+    //     this.location = 'localização'
+    //     this.origin = 'Localização de Origem'
+    //     this.status = 'desconhecido'
+    //     this.statusColor = 'background-color: coral'
+    //     this.species = 'desconhecida'
+    // }
+
+    // static get observedAttributes(){
+    //     return['name', 'image', 'gender', 'location', 'origin', 'status', 'species']
+    // }
