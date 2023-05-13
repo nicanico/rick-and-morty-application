@@ -162,7 +162,7 @@ class card extends HTMLElement {
         style.textContent = `
         .card-person{
             display: flex;
-            justify-content: space-between;
+            gap: 20px;
             align-items: center;
             width: 370px;
             height: 170px;
@@ -179,6 +179,14 @@ class card extends HTMLElement {
             height: 130px;
             margin-right: 19px;
             
+        }
+        .card-person p{
+            margin: 0px;
+        }
+        .name{
+            font-size: 1.5rem;
+            font-weight: bolder;
+            color: #B2DF28;
         }
         .status-condition{
             display: flex;
@@ -198,18 +206,3 @@ class card extends HTMLElement {
 }
 
 customElements.define('card-persona', card)
-
-
-    //     this.image = null
-    //     this.name = 'Nome do personagem'
-    //     this.gender = 'Genero'
-    //     this.location = 'localização'
-    //     this.origin = 'Localização de Origem'
-    //     this.status = 'desconhecido'
-    //     this.statusColor = 'background-color: coral'
-    //     this.species = 'desconhecida'
-    // }
-
-    // static get observedAttributes(){
-    //     return['name', 'image', 'gender', 'location', 'origin', 'status', 'species']
-    // }

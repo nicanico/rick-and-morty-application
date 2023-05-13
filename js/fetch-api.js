@@ -21,7 +21,7 @@ export const getAllLocations = async () => {
 
     const data = await response.json()
 
-    console.log(data.results)
+    // console.log(data.results)
     return data.results
 }
 
@@ -33,7 +33,7 @@ export const getAllEpisodes = async () => {
 
     const data = await response.json()
 
-    console.log(data.results)
+    // console.log(data.results)
     return data.results
 }
 
@@ -59,7 +59,7 @@ export const getFilteredLocation = async (name) => {
 
     const data = await response.json()
 
-    console.log(data.results)
+    // console.log(data.results)
     return data.results
 
 }
@@ -86,11 +86,11 @@ export const dataApi = async () =>{
     data.personagens =  dataCharacter.info.count
     data.episodios = dataEpisodies.info.count
     
-    console.log(data)
+    // console.log(data)
     return data
 }
 
-getAllCharacters()
-getAllEpisodes()
-getAllLocations()
-dataApi()
+// getAllCharacters()
+// getAllEpisodes()
+// getAllLocations()
+// dataApi()

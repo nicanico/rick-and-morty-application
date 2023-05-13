@@ -1,4 +1,4 @@
-import { getAllCharacters, getAllLocations, getAllEpisodes, dataApi} from "./fetch-api.js";
+import { getAllCharacters, getAllLocations, getAllEpisodes, dataApi, getFilteredCharacter} from "./fetch-api.js";
 import './components/cards.js'
 
 const dadosGeraisApi = await dataApi()
@@ -30,6 +30,35 @@ export const carregarTodosOsPersonagens = () => {
 
     container.replaceChildren(...cardsPerson)
     console.log(container)
+}
+
+export const buscarPersonagem = () => {
+
+    const inputSearch = document.getElementById('inputPersonagens')
+
+    const container = document.getElementById('divPersonagens')
+
+    inputSearch.addEventListener('keyup', async function(e) {
+        if(e.key === 'Enter') {
+            e.preventDefault()
+            console.log(inputSearch.value)
+            let characterName = inputSearch.value
+            if(characterName == ' '){
+                console.log('vazio')
+            } else {
+                console.log(getFilteredCharacter(characterName))
+                
+                const filtredCharacters = await getFilteredCharacter(characterName)
+                console
+
+                const cardsDosCaras = filtredCharacters.map(cardDoPersonagem)
+                
+                container.replaceChildren(...cardsDosCaras)
+            }
+        }
+    })
+
+    console.log(inputSearch.value)
 }
 
 export const listarDadosDaApi = async () => {
@@ -67,7 +96,6 @@ export const listarDadosDaApi = async () => {
     dados.append(dadosPersonagens, dadosLocalizacao, dadosEpisodios)
 
     cardGeralHome.append(divTituloDados, dados)
-    console.log(cardGeralHome)
     container.append(cardGeralHome)
 }
 
