@@ -1,9 +1,10 @@
-import { getAllCharacters, getAllLocations, getAllEpisodes, dataApi, getFilteredCharacter, getAllCharactersPage, getAllPage} from "./fetch-api.js";
+import { getAllCharacters, getAllLocations, getAllEpisodes, dataApi, getFilteredCharacter, getAllCharactersPage, getAllPage, getFilteredLocation, getFilteredEpisode} from "./fetch-api.js";
 import './components/cards.js'
 
 const dadosGeraisApi = await dataApi()
 const personagens = await getAllCharacters()
 const localizacao = await getAllLocations()
+const episodios = await getAllEpisodes()
 
 
 const cardDoPersonagem = (personagens) => {
@@ -34,6 +35,25 @@ const cardLocalizacao = (localizacao) => {
 
     return card
 
+}
+
+const cardEpisode = (episodios) => {
+    const card = document.createElement('card-planet')
+    card.classList.add('cardLocali')
+
+    card.planet = episodios.name
+    card.type = episodios.air_date
+    card.dimension = episodios.episode
+
+    return card
+
+}
+
+export const carregarTodosOsEps = () => {
+    const container = document.getElementById('divEpisodios')
+    const cardsEpi = episodios.map(cardEpisode)
+
+    container.replaceChildren(...cardsEpi)
 }
 
 export const carregarTodasAsLocalizacoes = () => {
@@ -74,8 +94,56 @@ export const buscarPersonagem = () => {
             }
         }
     })
+}
 
+export const buscarLocalizacao = () => {
+
+    const botaoCarregarMais = document.getElementById('carregarMais')
     
+    const inputSearch = document.getElementById('inputLocalizacao')
+
+    const container = document.getElementById('divLocalizacao')
+
+    inputSearch.addEventListener('keyup', async function(e) {
+        if(e.key === 'Enter') {
+            e.preventDefault()
+            console.log(inputSearch.value)
+            let locationName = inputSearch.value
+            if(locationName == ' '){
+                console.log('vazio')
+            } else {
+                botaoCarregarMais.style.display = 'none'
+                const filtredLocation = await getFilteredLocation(locationName)
+                const carregarCardsFiltrados = filtredLocation.map(cardLocalizacao)
+                container.replaceChildren(...carregarCardsFiltrados)
+            }
+        }
+    })
+}
+
+export const buscarEpisodio = () => {
+
+    const botaoCarregarMais = document.getElementById('carregarMais')
+    
+    const inputSearch = document.getElementById('inputEpisodios')
+
+    const container = document.getElementById('divEpisodios')
+
+    inputSearch.addEventListener('keyup', async function(e) {
+        if(e.key === 'Enter') {
+            e.preventDefault()
+            console.log(inputSearch.value)
+            let episodeName = inputSearch.value
+            if(episodeName == ' '){
+                console.log('vazio')
+            } else {
+                botaoCarregarMais.style.display = 'none'
+                const filtredEpisode = await getFilteredEpisode(episodeName)
+                const carregarCardsFiltrados = filtredEpisode.map(cardEpisode)
+                container.replaceChildren(...carregarCardsFiltrados)
+            }
+        }
+    })
 }
 
 export const filtrarPorStatusEGenero = () => {
@@ -86,6 +154,8 @@ export const carregarMaisItens = (path) => {
 
     const container = document.getElementById('divPersonagens')
     const containerLocalization = document.getElementById('divLocalizacao')
+    const containerEps = document.getElementById('divEpisodios')
+
     const botaoCarregarMais = document.getElementById('carregarMais')
 
     let page = 1
@@ -106,7 +176,7 @@ export const carregarMaisItens = (path) => {
                 page++
                 const pathName = path.substring(1,100)
                 let card = await getAllPage(pathName, page) 
-                let carregarNovasLocalizacoes = card.map(cardLocalizacao) // fazer card
+                let carregarNovasLocalizacoes = card.map(cardLocalizacao) 
                 console.log(carregarNovasLocalizacoes)
                 containerLocalization.append(...carregarNovasLocalizacoes)
                 console.log(card)
@@ -120,9 +190,9 @@ export const carregarMaisItens = (path) => {
                 page++
                 const pathName = path.substring(1,100)
                 let card = await getAllPage(pathName, page) 
-                // let carregarNovasLocalizacoes = card.map(cardLocalizacao) // fazer card
-                // console.log(carregarNovasLocalizacoes)
-                // container.append(...carregarNovasLocalizacoes)
+                let carregarNovosEps = card.map(cardEpisode)
+                console.log(carregarNovosEps)
+                containerEps.append(...carregarNovosEps)
                 console.log(card)
                 console.log(pathName)
             } else {

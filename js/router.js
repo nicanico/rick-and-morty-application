@@ -1,7 +1,7 @@
 
 'use strict'
 
-import { listarDadosDaApi, carregarTodosOsPersonagens, buscarPersonagem, carregarMaisItens, carregarTodasAsLocalizacoes } from './main.js'
+import { listarDadosDaApi, carregarTodosOsPersonagens, buscarPersonagem, carregarMaisItens, carregarTodasAsLocalizacoes, carregarTodosOsEps, buscarLocalizacao, buscarEpisodio } from './main.js'
 
 const routes = {
     '/in': 'index.html',
@@ -34,8 +34,11 @@ const route = async () => {
         carregarMaisItens(path)
     } else if(window.location.pathname == '/location'){
         carregarTodasAsLocalizacoes()
+        buscarLocalizacao()
         carregarMaisItens(path)
     } else if (window.location.pathname == '/episode'){
+        carregarTodosOsEps()
+        buscarEpisodio()
         carregarMaisItens(path)
     
     }

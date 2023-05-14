@@ -4,3 +4,20 @@
     align-items: center;
     justify-content: center;
 }
+
+.container-cards-ep{
+    display: grid;
+    width: 850px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    place-content: center;
+    gap: 35px;
+}
+
+@media (max-width: 640px) {
+    .container-cards-ep{
+        display: flex;
+        grid-template-columns: none;
+        place-content: none;
+        width: 500px;
+    }
+}

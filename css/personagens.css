@@ -9,7 +9,7 @@
 
 /* FILTRO */
 
-.dropbtn {
+/* .dropbtn {
   background-color: #252525;
   color: #B2DF28;
   height: 20px;
@@ -56,7 +56,7 @@
 .drops{
   display: flex;
   gap: 70px;
-}
+} */
 .option{
   color: #343434;
 }

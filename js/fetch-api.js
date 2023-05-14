@@ -64,6 +64,19 @@ export const getFilteredLocation = async (name) => {
 
 }
 
+// Filtra o episodio, por enquanto apenas por nome
+export const getFilteredEpisode = async (name) => {
+    const url = `https://rickandmortyapi.com/api/episode/?name=${name}`
+
+    const response = await fetch(url)
+
+    const data = await response.json()
+
+    // console.log(data.results)
+    return data.results
+
+}
+
 // pega a quantidade de personagens, episodios e locais da serie
 export const dataApi = async () =>{
     const urlLocation = `https://rickandmortyapi.com/api/location`
@@ -116,10 +129,3 @@ export const getAllPage = async (path, pageNumber) => {
     return data.results
 
 } 
-
-// getAllCharacters()
-// getAllEpisodes()
-// getAllLocations()
-dataApi()
-getAllCharactersPage(2)
-getAllPage('episode', 3)
