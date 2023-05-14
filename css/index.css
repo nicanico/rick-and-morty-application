@@ -56,8 +56,7 @@
         margin-bottom: 20px;
         position: relative;
         display: inline-block;
-      }
-      
+}
       .dropdown-content-menu{
         display: none;
         position: absolute;

@@ -26,3 +26,16 @@
     box-shadow:  0px 10px 25px -3px #b1df2823;
     transform: perspective(1em) rotate(2deg);
 }
+
+@media (max-width: 640px) {
+    .rep{
+        width: 100px;
+        height: 30px;
+        font-size: 10px;
+    }
+    .rep:hover{
+        letter-spacing: 0px;
+        box-shadow:  0px 10px 25px -3px #b1df2823;
+        transform: none;
+    }
+}
