@@ -1,7 +1,7 @@
 
 'use strict'
 
-import { listarDadosDaApi, carregarTodosOsPersonagens, buscarPersonagem } from './main.js'
+import { listarDadosDaApi, carregarTodosOsPersonagens, buscarPersonagem, carregarMaisPersonagens } from './main.js'
 
 const routes = {
     '/in': 'index.html',
@@ -18,23 +18,18 @@ const route = async () => {
     window.history.pushState({}, "", window.event.target.href)
 
     const path = window.location.pathname
-
     
     const response = await fetch(routes[path])
     const html = await response.text()
-
-    // console.log(html)
-
-    console.log(path)
     
     document.getElementById('root').innerHTML = html
     
     if(window.location.pathname == '/'){
         listarDadosDaApi()
     } else if(window.location.pathname == '/personagens'){
-        console.log(window.location.pathname)
         carregarTodosOsPersonagens()
         buscarPersonagem()
+        carregarMaisPersonagens()
     }
 
 }

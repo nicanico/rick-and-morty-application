@@ -53,6 +53,32 @@
   display: block;
 }
 
+.drops{
+  display: flex;
+  gap: 70px;
+}
+.option{
+  color: #343434;
+}
+.personagens{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.carregar-personagens{
+  width: 250px;
+  height: 45px;
+  background-color: #252525;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-top: 25px;
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
 
 /* .card-person{
     display: flex;

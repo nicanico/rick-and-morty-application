@@ -78,19 +78,34 @@ export const dataApi = async () =>{
     const dataCharacter = await responseCharacter.json()
     const dataEpisodies = await responseEpisodies.json()
 
-    // console.log(dataLocation.info.count, dataCharacter.info.count, dataEpisodies.info.count)
     
     const data = {}
     
     data.localizacoes = dataLocation.info.count
     data.personagens =  dataCharacter.info.count
     data.episodios = dataEpisodies.info.count
-    
-    // console.log(data)
+    data.pageCharacter = dataCharacter.info.pages
+    data.pageEpisodios = dataEpisodies.info.pages
+    data.pageLocalizacoes = dataLocation.info.pages
+
     return data
 }
+
+export const getAllCharactersPage = async (pageNumber) => {
+
+    const url = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`
+
+    const responde = await fetch(url)
+
+    const data = await responde.json()
+
+    
+    return data.results
+
+} 
 
 // getAllCharacters()
 // getAllEpisodes()
 // getAllLocations()
-// dataApi()
+dataApi()
+getAllCharactersPage(2)

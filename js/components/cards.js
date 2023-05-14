@@ -198,7 +198,11 @@ class card extends HTMLElement {
             height: 10px;
             background-color: tomato;
             border-radius: 20px;
-        } 
+        }
+        .card-person:hover {
+            border-color: #B2DF28;
+            box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+        }
         `
         return style
     }

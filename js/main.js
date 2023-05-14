@@ -1,12 +1,10 @@
-import { getAllCharacters, getAllLocations, getAllEpisodes, dataApi, getFilteredCharacter} from "./fetch-api.js";
+import { getAllCharacters, getAllLocations, getAllEpisodes, dataApi, getFilteredCharacter, getAllCharactersPage} from "./fetch-api.js";
 import './components/cards.js'
 
 const dadosGeraisApi = await dataApi()
 const personagens = await getAllCharacters()
-console.log(personagens)
 
 const cardDoPersonagem = (personagens) => {
-    console.log(personagens)
 
     const card = document.createElement('card-persona')
     card.classList.add('card-person')
@@ -18,6 +16,7 @@ const cardDoPersonagem = (personagens) => {
     card.origin = personagens.origin.name
     card.status = personagens.status
     card.species = personagens.species
+    console.log(card)
     
 
     return card
@@ -29,10 +28,13 @@ export const carregarTodosOsPersonagens = () => {
     const cardsPerson = personagens.map(cardDoPersonagem)
 
     container.replaceChildren(...cardsPerson)
-    console.log(container)
+    
 }
 
 export const buscarPersonagem = () => {
+
+    const botaoCarregarMais = document.getElementById('carregarMaisPersonagens')
+    
 
     const inputSearch = document.getElementById('inputPersonagens')
 
@@ -46,19 +48,42 @@ export const buscarPersonagem = () => {
             if(characterName == ' '){
                 console.log('vazio')
             } else {
-                console.log(getFilteredCharacter(characterName))
-                
+                botaoCarregarMais.style.display = 'none'
                 const filtredCharacters = await getFilteredCharacter(characterName)
-                console
-
-                const cardsDosCaras = filtredCharacters.map(cardDoPersonagem)
-                
-                container.replaceChildren(...cardsDosCaras)
+                const carregarCardsFiltrados = filtredCharacters.map(cardDoPersonagem)
+                container.replaceChildren(...carregarCardsFiltrados)
             }
         }
     })
 
-    console.log(inputSearch.value)
+    
+}
+
+export const filtrarPorStatusEGenero = () => {
+    
+}
+
+export const carregarMaisPersonagens = () => {
+
+    const container = document.getElementById('divPersonagens')
+    const botaoCarregarMais = document.getElementById('carregarMaisPersonagens')
+
+    let page = 1
+
+    botaoCarregarMais.onclick = async () => {
+        if(page < dadosGeraisApi.pageCharacter){
+            page++
+            let card = await getAllCharactersPage(page)
+            let carregarNovosPersonagens = card.map(cardDoPersonagem)
+            console.log(carregarNovosPersonagens)
+            container.append(...carregarNovosPersonagens)
+            console.log(card)
+        } else {
+            botaoCarregarMais.style.display = 'none'
+        }
+        console.log('click')
+    }
+    
 }
 
 export const listarDadosDaApi = async () => {

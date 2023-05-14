@@ -1,17 +1,29 @@
 <script src="../js/fetch-api.js" type="module"></script>
 
-<section class="container format-page">
+<section class="container format-page personagens">
     <div class="title-section">
         <p class="title shake-slow">Personagens</p>
         
         <input id="inputPersonagens" type="search">
-        <div class="dropdown">
-            <button class="dropbtn">Status</button>
-            <div class="dropdown-content">
-                <a href="#">Alive</a>
-                <a href="#">Dead</a>
-                <a href="#">Unknown</a>
+        <div class="drops">
+            <div class="dropdown">
+                <button class="dropbtn">Status</button>
+                <div class="dropdown-content">
+                    <a href="#">Alive</a>
+                    <a href="#">Dead</a>
+                    <a href="#">Unknown</a>
+                </div>
             </div>
+            <div class="dropdown">
+                <button class="dropbtn">Gender</button>
+                <div class="dropdown-content">
+                    <a href="#">Female</a>
+                    <a href="#">Male</a>
+                    <a href="#">Genderless</a>
+                    <a href="#">Unknown</a>
+                </div>
+            </div>
+            <div class="option">...</div>
         </div>
     </div>
     
@@ -32,5 +44,6 @@
             </div>
         </div> -->
     </div>
+    <p id="carregarMaisPersonagens" class="carregar-personagens" >Carregar mais Personagens</p>
     
 </section>
