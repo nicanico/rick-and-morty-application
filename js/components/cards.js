@@ -172,7 +172,8 @@ class card extends HTMLElement {
             padding: 25px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: 1px solid rgba(255, 255, 255, 0.5);
-        
+            transition: 0.5s ease-out;
+            overflow: visible;
         }
         .card-person img{
             width: 130px;
@@ -209,4 +210,101 @@ class card extends HTMLElement {
 
 }
 
+class cardLocal extends HTMLElement {
+    constructor() {
+        super()
+        this.shadow = this.attachShadow({mode: 'open'})
+
+        this.planet = 'nome do planeta'
+        this.type = 'tipo do planeta'
+        this.dimension = 'dimensão'
+        
+    }
+
+    static get observedAttributes(){
+        return ['planet', 'type', 'dimension']
+    }
+
+    attributeChangedCallback(nameAttr, oldValue, newValue) {
+        this[nameAttr] = newValue
+    }
+
+    connectedCallback() {
+        this.shadow.appendChild(this.component())
+        this.shadow.appendChild(this.style())
+    }
+
+    component(){
+        const cardLocali = document.createElement('div')
+        cardLocali.classList.add('cardLocali')
+
+        const cardDetails = document.createElement('div')
+        cardDetails.classList.add('card-details')
+
+        const planet = document.createElement('p')
+        planet.classList.add('text-title')
+        planet.textContent = this.planet
+
+        const type = document.createElement('p')
+        type.classList.add('text-body')
+        type.textContent = this.type
+
+        const dimension = document.createElement('p')
+        dimension.classList.add('text-body')
+        dimension.textContent = this.dimension
+
+        cardDetails.append(planet, type, dimension)
+
+        cardLocali.append(cardDetails)
+
+        return cardLocali
+    }
+
+    style(){
+        const style = document.createElement('style')
+        style.textContent = `
+        .cardLocali {
+            width: 250px;
+            height: 154px;
+            border-radius: 20px;
+            background: #f5f5f5;
+            position: relative;
+            padding: 30px;
+            border: 2px solid #c3c6ce;
+            transition: 0.5s ease-out;
+            overflow: visible;
+        }
+        
+        .card-details {
+            color: black;
+            height: 100%;
+            display: grid;
+            place-content: center;
+        }
+
+        .text-body {
+            color: rgb(134, 134, 134);
+        }
+        /*Text*/
+        .text-title {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        /*Hover*/
+        .cardLocali:hover {
+            border-color: #B2DF28;
+            box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        `
+
+        return style
+        
+    }
+
+}
+
+
 customElements.define('card-persona', card)
+customElements.define('card-planet', cardLocal)

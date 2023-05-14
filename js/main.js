@@ -1,8 +1,10 @@
-import { getAllCharacters, getAllLocations, getAllEpisodes, dataApi, getFilteredCharacter, getAllCharactersPage} from "./fetch-api.js";
+import { getAllCharacters, getAllLocations, getAllEpisodes, dataApi, getFilteredCharacter, getAllCharactersPage, getAllPage} from "./fetch-api.js";
 import './components/cards.js'
 
 const dadosGeraisApi = await dataApi()
 const personagens = await getAllCharacters()
+const localizacao = await getAllLocations()
+
 
 const cardDoPersonagem = (personagens) => {
 
@@ -16,11 +18,29 @@ const cardDoPersonagem = (personagens) => {
     card.origin = personagens.origin.name
     card.status = personagens.status
     card.species = personagens.species
-    console.log(card)
     
 
     return card
     
+}
+
+const cardLocalizacao = (localizacao) => {
+    const card = document.createElement('card-planet')
+    card.classList.add('cardLocali')
+
+    card.planet = localizacao.name
+    card.type = localizacao.type
+    card.dimension = localizacao.dimension
+
+    return card
+
+}
+
+export const carregarTodasAsLocalizacoes = () => {
+    const container = document.getElementById('divLocalizacao')
+    const cardsLocal = localizacao.map(cardLocalizacao)
+
+    container.replaceChildren(...cardsLocal)
 }
 
 export const carregarTodosOsPersonagens = () => {
@@ -33,9 +53,8 @@ export const carregarTodosOsPersonagens = () => {
 
 export const buscarPersonagem = () => {
 
-    const botaoCarregarMais = document.getElementById('carregarMaisPersonagens')
+    const botaoCarregarMais = document.getElementById('carregarMais')
     
-
     const inputSearch = document.getElementById('inputPersonagens')
 
     const container = document.getElementById('divPersonagens')
@@ -63,24 +82,55 @@ export const filtrarPorStatusEGenero = () => {
     
 }
 
-export const carregarMaisPersonagens = () => {
+export const carregarMaisItens = (path) => {
 
     const container = document.getElementById('divPersonagens')
-    const botaoCarregarMais = document.getElementById('carregarMaisPersonagens')
+    const containerLocalization = document.getElementById('divLocalizacao')
+    const botaoCarregarMais = document.getElementById('carregarMais')
 
     let page = 1
 
     botaoCarregarMais.onclick = async () => {
-        if(page < dadosGeraisApi.pageCharacter){
-            page++
-            let card = await getAllCharactersPage(page)
-            let carregarNovosPersonagens = card.map(cardDoPersonagem)
-            console.log(carregarNovosPersonagens)
-            container.append(...carregarNovosPersonagens)
-            console.log(card)
-        } else {
-            botaoCarregarMais.style.display = 'none'
+        if(path == '/character'){
+            if(page < dadosGeraisApi.pageCharacter){
+                page++
+                console.log(path.substring(1,100))
+                let card = await getAllCharactersPage(page)
+                let carregarNovosPersonagens = card.map(cardDoPersonagem)
+                container.append(...carregarNovosPersonagens)
+            } else {
+                botaoCarregarMais.style.display = 'none'
+            }
+        } else if(path == '/location') {
+            if(page < dadosGeraisApi.pageLocalizacoes){
+                page++
+                const pathName = path.substring(1,100)
+                let card = await getAllPage(pathName, page) 
+                let carregarNovasLocalizacoes = card.map(cardLocalizacao) // fazer card
+                console.log(carregarNovasLocalizacoes)
+                containerLocalization.append(...carregarNovasLocalizacoes)
+                console.log(card)
+                console.log(pathName)
+            } else {
+                botaoCarregarMais.style.display = 'none'
+            }
+            console.log('estou em location')
+        } else if(path == '/episode'){
+            if(page < dadosGeraisApi.pageEpisodios){
+                page++
+                const pathName = path.substring(1,100)
+                let card = await getAllPage(pathName, page) 
+                // let carregarNovasLocalizacoes = card.map(cardLocalizacao) // fazer card
+                // console.log(carregarNovasLocalizacoes)
+                // container.append(...carregarNovasLocalizacoes)
+                console.log(card)
+                console.log(pathName)
+            } else {
+                botaoCarregarMais.style.display = 'none'
+            }
+            console.log('estou em episode')
         }
+        
         console.log('click')
     }
     

@@ -1,14 +1,14 @@
 
 'use strict'
 
-import { listarDadosDaApi, carregarTodosOsPersonagens, buscarPersonagem, carregarMaisPersonagens } from './main.js'
+import { listarDadosDaApi, carregarTodosOsPersonagens, buscarPersonagem, carregarMaisItens, carregarTodasAsLocalizacoes } from './main.js'
 
 const routes = {
     '/in': 'index.html',
     '/' : '/pages/home.html',
-    '/personagens' : '/pages/personagens.html',
-    '/localizacao' : '/pages/localizacao.html',
-    '/episodio' : '/pages/episodio.html'
+    '/character' : '/pages/personagens.html',
+    '/location' : '/pages/localizacao.html',
+    '/episode' : '/pages/episodio.html'
 }
 
 const route = async () => {
@@ -21,15 +21,23 @@ const route = async () => {
     
     const response = await fetch(routes[path])
     const html = await response.text()
+
+    console.log(path)
     
     document.getElementById('root').innerHTML = html
     
     if(window.location.pathname == '/'){
         listarDadosDaApi()
-    } else if(window.location.pathname == '/personagens'){
+    } else if(window.location.pathname == '/character'){
         carregarTodosOsPersonagens()
         buscarPersonagem()
-        carregarMaisPersonagens()
+        carregarMaisItens(path)
+    } else if(window.location.pathname == '/location'){
+        carregarTodasAsLocalizacoes()
+        carregarMaisItens(path)
+    } else if (window.location.pathname == '/episode'){
+        carregarMaisItens(path)
+    
     }
 
 }

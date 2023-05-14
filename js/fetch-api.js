@@ -104,8 +104,22 @@ export const getAllCharactersPage = async (pageNumber) => {
 
 } 
 
+export const getAllPage = async (path, pageNumber) => {
+
+    const url = `https://rickandmortyapi.com/api/${path}?page=${pageNumber}`
+
+    const responde = await fetch(url)
+
+    const data = await responde.json()
+
+    console.log(data.results)
+    return data.results
+
+} 
+
 // getAllCharacters()
 // getAllEpisodes()
 // getAllLocations()
 dataApi()
 getAllCharactersPage(2)
+getAllPage('episode', 3)
