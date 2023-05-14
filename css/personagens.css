@@ -79,34 +79,11 @@
   cursor: pointer;
 }
 
-
-/* .card-person{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 370px;
-    height: 170px;
-    background-color: #252525;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-
+@media (max-width: 640px) {
+  .container-cards-person{
+      display: flex;
+      grid-template-columns: none;
+      place-content: none;
+      width: 500px;
+  }
 }
-.card-person img{
-    width: 130px;
-    height: 130px;
-    margin-right: 19px;
-}
-.status-condition{
-    display: flex;
-    gap: 5px;
-    align-items: center;
-}
-.status-color-person{
-    width: 10px;
-    height: 10px;
-    background-color: tomato;
-    border-radius: 20px;
-}  */

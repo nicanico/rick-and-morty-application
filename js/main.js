@@ -174,6 +174,4 @@ export const listarDadosDaApi = async () => {
     container.append(cardGeralHome)
 }
 
-// cardDoPersonagem()
-// carregarTodosOsPersonagens()
 

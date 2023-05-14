@@ -19,4 +19,10 @@ input, input:focus {
     margin-bottom: 42px;
     background-color: #252525;
     color: #fff;
-} 
+}
+
+@media (max-width: 640px) {
+    input, input:focus{
+        width: 420px;
+    }
+}

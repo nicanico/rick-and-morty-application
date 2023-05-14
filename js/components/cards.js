@@ -264,8 +264,8 @@ class cardLocal extends HTMLElement {
         const style = document.createElement('style')
         style.textContent = `
         .cardLocali {
-            width: 250px;
-            height: 154px;
+            width: 255px;
+            height: 84px;
             border-radius: 20px;
             background: #f5f5f5;
             position: relative;
@@ -279,15 +279,17 @@ class cardLocal extends HTMLElement {
             color: black;
             height: 100%;
             display: grid;
-            place-content: center;
+            place-content: start;
         }
 
         .text-body {
+            margin: 0px;
             color: rgb(134, 134, 134);
         }
         /*Text*/
         .text-title {
-            font-size: 1rem;
+            margin: 5px;
+            font-size: 1.2rem;
             font-weight: bold;
         }
 

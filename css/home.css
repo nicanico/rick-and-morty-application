@@ -3,6 +3,7 @@
     grid-template-columns: 800px 1fr;
     place-content: center;
     align-self: center;
+    
 }
 .titulo-descricao-page{
     display: flex;
@@ -129,7 +130,7 @@
     font-weight: bold;
 }
 
-.localizacao, .visto-pela-primeira{
+.localizacaoCard, .visto-pela-primeira{
     font-weight: bold;
     margin-top: 10px;
 }
@@ -175,4 +176,37 @@
     align-items: center;
     justify-content: center;
     gap: 80px;
+}
+
+@media (max-width: 640px) {
+    .home{
+        display: flex;
+        flex-direction: column;
+    }
+    .card-dados{
+        position: relative;
+        right: 10px;
+    }
+    .container-cards{
+        position: relative;
+        bottom: 450px;
+        right: 10px;
+    }
+    .img-rick-morty{
+        margin-top: 50px;
+        width: 350px;
+        height: 350px;
+    }
+    
+    .descricao{
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: 20px;
+    }
+    .titulo{
+        font-size: 3rem;
+    }
+    .serie-titulo{
+        font-size: 3rem;
+    }
 }

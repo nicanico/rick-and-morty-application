@@ -26,10 +26,7 @@ header {
   align-items: center;
   justify-content: center;
 }
-.container {
-  width: 100%;
-  height: 100%;
-}
+
 .conf-center {
   display: grid;
   place-content: center;
@@ -48,3 +45,13 @@ footer {
   background-color: #252522;
   margin-top: 30px;
 }
+@media (max-width: 640px) {
+  header{
+    
+  }
+  format-page{
+      display: flex;
+      flex-direction: column;
+  }
+}
+
